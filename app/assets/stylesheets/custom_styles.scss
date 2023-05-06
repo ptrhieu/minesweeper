@@ -2,12 +2,18 @@
   width: 100%;
 }
 
+.no-wrap {
+  white-space: nowrap;
+}
+
 .cell-row {
-  display: flex;
+  display: block;
 
   .cell {
     width: 30px;
     height: 30px;
+    display: inline-block;
+    white-space: nowrap;
 
     .cell-content {
       width: 100%;
