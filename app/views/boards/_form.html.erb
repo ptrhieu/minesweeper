@@ -1,0 +1,48 @@
+<%= form_with(model: board) do |form| %>
+  <% if board.errors.any? %>
+    <div class="row" style="color: red">
+      <div class="col-12">
+        <h2><%= pluralize(board.errors.count, "error") %> prohibited this board from being saved:</h2>
+
+        <ul>
+          <% board.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-6">
+      <%= form.label :email, style: "display: block" %>
+      <%= form.text_field :email, class: "form-control string email" %>
+    </div>
+    <div class="col-6">
+      <%= form.label :name, style: "display: block" %>
+      <%= form.text_field :name, class: "form-control string" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-6">
+      <%= form.label :width, style: "display: block" %>
+      <%= form.number_field :width, class: "form-control" %>
+    </div>
+    <div class="col-6">
+      <%= form.label :height, style: "display: block" %>
+      <%= form.number_field :height, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-6">
+      <%= form.label :number_of_mines, style: "display: block" %>
+      <%= form.number_field :number_of_mines, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="col-6 offset-3 mt-3">
+    <%= form.submit class: "btn btn-primary btn-block" %>
+  </div>
+<% end %>

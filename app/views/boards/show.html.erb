@@ -1,0 +1,40 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="row">
+  <div class="col-12">
+    <h3>Name</h3>
+    <div><%= @board.name %></div>
+    <h3>Email</h3>
+    <div><%= @board.email %></div>
+  </div>
+</div>
+<br>
+<br>
+<div class="row">
+  <div class="col-12">
+    <%- (0..(@board.width - 1)).each do |x| %>
+      <div class="cell-row">
+        <%- (0..(@board.height - 1)).each do |y| %>
+          <%- cell = @cells.find { |c| c.x == x && c.y == y } %>
+          <%- if cell.has_mine%>
+            <div class="cell">
+              <div class="cell-content mine">
+              </div>
+            </div>
+          <% else %>
+            <div class="cell">
+              <div class="cell-content empty">
+              </div>
+            </div>
+          <%- end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<br>
+<br>
+<div>
+  <%= link_to "Back to boards", boards_path %>
+</div>

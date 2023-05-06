@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Boards</h1>
+
+<div id="boards">
+  <div class="row">
+    <div class="col-6"><b>Board Name</b></div>
+    <div class="col-3"><b>Email</b></div>
+    <div class="col-3"><b>Created Date</b></div>
+  </div>
+  <% @boards.each do |board| %>
+    <%= render board %>
+  <% end %>
+</div>
+<br>
+<%= link_to "New board", new_board_path %>
