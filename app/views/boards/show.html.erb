@@ -12,23 +12,12 @@
 <br>
 <div class="row">
   <div class="col-12 no-wrap">
-    <%- (0..(@board.width - 1)).each do |x| %>
-      <div class="cell-row">
-        <%- (0..(@board.height - 1)).each do |y| %>
-          <%- if @board.is_mine_set_at?(x, y) %>
-            <div class="cell">
-              <div class="cell-content mine">
-              </div>
-            </div>
-          <% else %>
-            <div class="cell">
-              <div class="cell-content empty">
-              </div>
-            </div>
-          <%- end %>
-        <% end %>
-      </div>
+    <%= turbo_frame_tag 'cell_list' do %>
+      <%= render partial: 'cells', locals: { cell_indexes: @indexes } %>
     <% end %>
+  </div>
+  <div class="col-12">
+    <%= turbo_frame_tag "load_more", loading: 'lazy', src: board_path(@board, page: @page + 1, format: "turbo_stream") %>
   </div>
 </div>
 

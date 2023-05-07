@@ -1,0 +1,7 @@
+<%= turbo_stream.append "cell_list" do %>
+  <%= render partial: 'cells', locals: { cell_indexes: @indexes } %>
+<% end %>
+
+<%= turbo_stream.replace "load_more" do %>
+  <%= turbo_frame_tag "load_more", loading: 'lazy', src: board_path(@board, page: @page + 1, format: "turbo_stream") %>
+<% end %>

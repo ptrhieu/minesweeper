@@ -1,0 +1,11 @@
+<%- if @mine_positions.find { |v| v[:index] == index }.present? %>
+  <div class="cell">
+    <div class="cell-content mine">
+    </div>
+  </div>
+<% else %>
+  <div class="cell">
+    <div class="cell-content empty">
+    </div>
+  </div>
+<%- end %>

@@ -8,6 +8,20 @@ class BoardsController < ApplicationController
 
   # GET /boards/1 or /boards/1.json
   def show
+    @mine_positions = @board.mine_positions
+    @board_width = @board.width
+    @board_height = @board.height
+    @page = params[:page].present? ? params[:page].to_i : 1
+    @per_page =  params[:per_page].present? ? params[:per_page].to_i : 1000
+    from_index = (@page - 1) * @per_page
+    to_index = @page * @per_page - 1
+    to_index = @board_width * @board.height - 1 if to_index > @board_width * @board.height - 1
+    @indexes = (from_index..to_index).to_a
+
+    respond_to do |format|
+      format.html
+      format.turbo_stream
+    end
   end
 
   # GET /boards/new

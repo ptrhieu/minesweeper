@@ -1,0 +1,6 @@
+<%- cell_indexes.each do |index|%>
+  <%- if index % @board_height == 0 %>
+    <br/>
+  <%- end %>
+  <%= render partial: 'cell', locals: { index: index } %>
+<% end %>
