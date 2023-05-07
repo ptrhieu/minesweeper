@@ -22,6 +22,5 @@
 /public/assets
 
 # Ignore master key for decrypting credentials and more.
-/config/master.key
 /.idea/*
 /node_modules/*
